@@ -23,13 +23,12 @@ object Bootstrap extends App with Injectable {
   implicit val injector = Modules()
 
   val httpService = inject[HttpService]
-  val dbConfig = inject[DBConf]
 
   // initialize db.
-  dbConfig.initialize()
-
+  // val dbConfig = inject[DBConf]
+  // dbConfig.initialize()
   // refreshable after initialized db.
-  CacheModules.refresh()
+  // CacheModules.refresh()
 
   Http().bindAndHandle(httpService.routes, "127.0.0.1", 8080)
 
